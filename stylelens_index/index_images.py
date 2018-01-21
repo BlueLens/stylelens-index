@@ -45,6 +45,18 @@ class IndexImages(DataBaseImage):
 
     return r
 
+  def get_sim_images(self, image_id):
+    query = {}
+    query['_id'] = ObjectId(image_id)
+
+    try:
+      r = self.images.find_one(query, {'images':1, '_id':0})
+    except Exception as e:
+      print(e)
+      return None
+
+    return r.get('images')
+
   def get_images(self, version_id,
                   offset=0, limit=10):
     query = {}
