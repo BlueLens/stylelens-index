@@ -68,3 +68,12 @@ class IndexImages(DataBaseImage):
       print(e)
 
     return list(r)
+
+  def delete_all(self):
+    query = {}
+    try:
+      r = self.images.delete_many(query)
+    except Exception as e:
+      print(e)
+
+    return r.raw_result

@@ -47,3 +47,12 @@ class IndexObjects(DataBaseObject):
       print(e)
 
     return list(r)
+
+  def delete_all(self):
+    query = {}
+    try:
+      r = self.objects.delete_many(query)
+    except Exception as e:
+      print(e)
+
+    return r.raw_result
